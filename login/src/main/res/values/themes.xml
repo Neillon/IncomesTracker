@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LoginFeatureTheme" parent="Theme.MaterialComponents.Light">
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
+    </style>
+
+    <style name="ActivityNoActionBarTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="statusBarBackground">@color/white</item>
+        <item name="android:navigationBarColor">@color/white</item>
+    </style>
+
+</resources>

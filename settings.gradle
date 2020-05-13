@@ -1,3 +1,4 @@
 rootProject.name='IncomesTracker'
 include ':app'
 include ':login'
+include ':common'
