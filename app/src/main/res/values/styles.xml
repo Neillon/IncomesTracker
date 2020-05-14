@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="MainActivityStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="HomeActivityStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
 
         <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="LoginFeatureTheme" parent="Theme.MaterialComponents.Light">
+    <style name="LoginFeatureLightTheme" parent="Theme.MaterialComponents.Light">
         <item name="android:textViewStyle">@style/TextViewStyle</item>
     </style>
 

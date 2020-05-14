@@ -19,4 +19,7 @@
 
     </style>
 
+    <!-- Login Module style declarations -->
+    <style name="LoginFeatureLightTheme" parent="Theme.MaterialComponents.Light" />
+    <style name="ActivityNoActionBarTheme" parent="Theme.MaterialComponents.Light.NoActionBar" />
 </resources>
