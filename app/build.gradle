@@ -18,9 +18,13 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled true
         }
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
     }
 
     viewBinding {
@@ -40,6 +44,9 @@ dependencies {
 
     // Material Design Components
     implementation "com.google.android.material:material:$material_design_version"
+
+    // Play core
+    implementation "com.google.android.play:core:$playcore_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
