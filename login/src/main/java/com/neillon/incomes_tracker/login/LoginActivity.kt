@@ -3,6 +3,7 @@ package com.neillon.incomes_tracker.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import com.neillon.incomes_tracker.signup.SignUpActivity
 import com.neillon.login.databinding.ActivityLoginBinding
 
@@ -15,10 +16,12 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupLayout()
+        initializeViews()
     }
 
-    private fun setupLayout() {
+    private fun initializeViews() {
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
         binding.mTextViewSignUp.setOnClickListener { gotoSignUpActivity() }
     }
 

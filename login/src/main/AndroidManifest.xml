@@ -21,10 +21,13 @@
 
         <activity
             android:name="com.neillon.incomes_tracker.signup.SignUpActivity"
-            android:theme="@style/ActivityNoActionBarTheme"></activity>
+            android:theme="@style/ActivityNoActionBarTheme"
+            android:windowSoftInputMode="stateVisible"
+            tools:replace="android:theme" />
         <activity
             android:name="com.neillon.incomes_tracker.login.LoginActivity"
-            android:theme="@style/ActivityNoActionBarTheme" />
+            android:theme="@style/ActivityNoActionBarTheme"
+            tools:replace="android:theme" />
 
     </application>
 
