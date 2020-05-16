@@ -24,6 +24,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':app')
+    implementation project(':common')
+    implementation project(':router')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api 'androidx.appcompat:appcompat:1.1.0'
@@ -33,6 +35,9 @@ dependencies {
     // Material Design Components
     implementation "com.google.android.material:material:$material_design_version"
 
+    // Play core
+    implementation "com.google.android.play:core:$playcore_version"
+    
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

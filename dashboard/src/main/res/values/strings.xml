@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="new_income_description">New Income</string>
+    <string name="dashboard_welcome_message">Welcome back,</string>
+    <string name="dashboard_balance_label">Your Balance</string>
+
+</resources>

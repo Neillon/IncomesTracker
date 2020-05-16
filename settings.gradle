@@ -1,3 +1,4 @@
+include ':dashboard'
 include ':router'
 rootProject.name='IncomesTracker'
 include ':app'

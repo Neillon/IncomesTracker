@@ -19,7 +19,13 @@
 
     </style>
 
-    <!-- Login Module style declarations -->
+    <!-- Login Module themes declarations -->
     <style name="LoginFeatureLightTheme" parent="Theme.MaterialComponents.Light" />
     <style name="ActivityNoActionBarTheme" parent="Theme.MaterialComponents.Light.NoActionBar" />
+
+    <!-- Dashboard Module themes declarations-->
+    <style name="DashboardLightTheme" parent="Theme.MaterialComponents.Light" />
+    <style name="DashboardDarkTheme" parent="Theme.MaterialComponents.DayNight" />
+
+
 </resources>
