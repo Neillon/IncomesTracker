@@ -20,10 +20,10 @@
         tools:replace="android:theme">
 
         <activity
-            android:name=".SignUpActivity"
+            android:name="com.neillon.incomes_tracker.signup.SignUpActivity"
             android:theme="@style/ActivityNoActionBarTheme"></activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="com.neillon.incomes_tracker.login.LoginActivity"
             android:theme="@style/ActivityNoActionBarTheme" />
 
     </application>

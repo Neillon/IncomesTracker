@@ -1,4 +1,4 @@
-package com.neillon.login
+package com.neillon.incomes_tracker.signup
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
