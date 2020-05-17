@@ -14,7 +14,7 @@
         tools:replace="android:theme,label">
 
         <activity
-            android:name=".HomeActivity"
+            android:name=".ui.HomeActivity"
             android:theme="@style/HomeActivityStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,7 +1,8 @@
-package com.neillon.incomes_tracker.dashboard
+package com.neillon.incomes_tracker.dashboard.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.neillon.incomes_tracker.dashboard.R
 
 class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

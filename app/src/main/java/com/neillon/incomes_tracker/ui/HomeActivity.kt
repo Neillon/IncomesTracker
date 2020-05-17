@@ -1,4 +1,4 @@
-package com.neillon.incomes_tracker
+package com.neillon.incomes_tracker.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -6,6 +6,7 @@ import android.widget.Toast
 import com.neillon.common.ui.DynamicFeatureActivity
 import com.neillon.incomes_tracker.databinding.ActivityHomeBinding
 import com.neillon.incomes_tracker.router.*
+import timber.log.Timber
 
 class HomeActivity : DynamicFeatureActivity() {
 
@@ -29,7 +30,7 @@ class HomeActivity : DynamicFeatureActivity() {
             .addListener(this@HomeActivity)
             .requestAndInstallModule(LOGIN_MODUlE_NAME)
             .addOnCompleteListener {
-                Router.navigateToFeature(this@HomeActivity, Feature.Login)
+                Router.navigateToFeature(this@HomeActivity, Feature.Dashboard)
             }
             .addOnSuccessListener { toastAndLog("Loading $LOGIN_MODUlE_NAME") }
             .addOnFailureListener { toastAndLog("Failed to install module") }
@@ -37,10 +38,10 @@ class HomeActivity : DynamicFeatureActivity() {
 
     private fun toastAndLog(message: String) {
         Toast.makeText(this@HomeActivity, message, Toast.LENGTH_LONG).show()
-        Log.d(TAG, message)
+        Timber.d(TAG, message)
     }
 
     companion object {
-        const val TAG = "HomeActivity"
+        val TAG = HomeActivity::class.simpleName
     }
 }
