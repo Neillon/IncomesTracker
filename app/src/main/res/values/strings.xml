@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Incomes Tracker</string>
     <string name="title_dashboard">Dashboard</string>
+    <string name="lets_go">Let`s go</string>
 </resources>

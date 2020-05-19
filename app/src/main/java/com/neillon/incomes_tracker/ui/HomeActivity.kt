@@ -21,7 +21,7 @@ class HomeActivity : DynamicFeatureActivity() {
     }
 
     private fun initializeViews() {
-        binding.mButtonSignIn.setOnClickListener { displayLogin() }
+        binding.mButtonGoToDashboard.setOnClickListener { displayLogin() }
     }
 
     private fun displayLogin() {
