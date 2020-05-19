@@ -3,6 +3,9 @@ package com.neillon.incomes_tracker.dashboard.ui
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
@@ -11,10 +14,12 @@ import com.google.android.material.textview.MaterialTextView
 import com.neillon.incomes_tracker.dashboard.R
 import com.neillon.incomes_tracker.dashboard.databinding.ActivityDashboardBinding
 
+private const val CURRENCY_PATTERN = "$ ---,--"
 
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
+    private var changeBalance = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,22 +31,18 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun initializeViews() {
         binding.mImageButtonShowBalance.setOnClickListener {
-            if (binding.mTextViewBalance.alpha > 0.5){
+            if (changeBalance){
                 startAlphaAnimationOnView(binding.mTextViewBalance, 1.0f, 0.0f)
-                startChangeIconAnimationOnView(binding.mImageButtonShowBalance, R.drawable.ic_baseline_remove_red_eye, R.drawable.ic_baseline_visibility_off)
+                binding.mImageButtonShowBalance.setImageResource(R.drawable.ic_baseline_visibility_off)
+                startAlphaAnimationOnView(binding.mTextViewBalance, 0.0f, 1.0f)
+                binding.mTextViewBalance.text = CURRENCY_PATTERN
             } else {
                 startAlphaAnimationOnView(binding.mTextViewBalance, 0.0f, 1.0f)
-                startChangeIconAnimationOnView(binding.mImageButtonShowBalance, R.drawable.ic_baseline_visibility_off, R.drawable.ic_baseline_remove_red_eye)
+                binding.mImageButtonShowBalance.setImageResource(R.drawable.ic_baseline_remove_red_eye)
+                binding.mTextViewBalance.text = "$ 25,480.90"
             }
-
+            changeBalance = !changeBalance
         }
-    }
-
-    private fun startChangeIconAnimationOnView(view: ImageButton, initial: Int, final: Int) {
-        val changeImageResourceAnimator = ObjectAnimator.ofInt(view, "imageResource", initial, final)
-        changeImageResourceAnimator.target = view
-        changeImageResourceAnimator.duration = 700L
-        changeImageResourceAnimator.start()
     }
 
     private fun startAlphaAnimationOnView(view: View, initial: Float, final: Float) {

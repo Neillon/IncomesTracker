@@ -17,47 +17,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/materialTextView2"
-            style="@style/TextAppearance.MaterialComponents.Headline5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
-            android:alpha=".5"
-            android:text="@string/dashboard_welcome_message"
-            android:textColor="?attr/colorOnPrimary"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/mTextViewUsername"
-            style="@style/TextAppearance.MaterialComponents.Headline5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:text="Neillon"
-            android:textColor="?attr/colorOnPrimary"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialTextView2" />
-
-
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/mTextViewBalanceLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:alpha=".5"
             android:text="@string/dashboard_balance_label"
             android:textColor="?attr/colorOnPrimary"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mTextViewUsername" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/mTextViewBalance"
             style="@style/TextAppearance.MaterialComponents.Headline4"
             android:layout_width="wrap_content"
@@ -78,13 +52,12 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="24dp"
             android:background="@null"
             android:src="@drawable/ic_baseline_remove_red_eye"
             android:tint="?attr/colorOnPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/mTextViewBalance" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
