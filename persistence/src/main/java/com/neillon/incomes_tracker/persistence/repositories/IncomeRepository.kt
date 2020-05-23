@@ -17,21 +17,25 @@ class IncomeRepository(
     private val dao = database.incomeDao()
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override suspend fun insert(entity: Income): Flow<Income?> {
-        val id = dao.insert(entity.toEntity())
+    override suspend fun insert(income: Income): Flow<Income?> {
+        val id = dao.insert(income.toEntity())
         return dao.getById(id)!!.map { it.toDomain() }
     }
 
-    override suspend fun listAll(): Flow<List<Income>> =
-        dao.getAll().map { it.toDomain() }
-
-    override suspend fun remove(entity: Income) {
+    override suspend fun listAll(): Flow<List<Income>?> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun update(entity: Income) {
-        TODO("Not yet implemented")
-    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    override suspend fun getById(id: Long): Flow<Income?> =
+        dao.getById(id)!!.map { it.toDomain() }
 
-    override suspend fun getById(id: Long): Flow<Income?> = dao.getById(id).map { it.toDomain() }
+    @RequiresApi(Build.VERSION_CODES.O)
+    override suspend fun remove(income: Income) =
+        dao.remove(income.toEntity())
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override suspend fun update(income: Income) =
+        dao.update(income.toEntity()).toDomain()
+
 }
