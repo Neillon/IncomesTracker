@@ -6,6 +6,8 @@ buildscript {
         material_design_version = '1.2.0-alpha06'
         playcore_version = '1.7.2'
         timber_version = '4.7.1'
+        coroutines_version = '1.3.7'
+        room_version = '2.2.5'
     }
 
     repositories {

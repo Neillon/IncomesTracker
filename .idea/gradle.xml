@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/dashboard" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/login" />
+            <option value="$PROJECT_DIR$/persistence" />
             <option value="$PROJECT_DIR$/router" />
           </set>
         </option>
