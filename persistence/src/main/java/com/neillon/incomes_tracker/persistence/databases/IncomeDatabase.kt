@@ -4,11 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.neillon.incomes_tracker.persistence.constants.RoomConstants
 import com.neillon.incomes_tracker.persistence.daos.IncomeDao
 import com.neillon.incomes_tracker.persistence.daos.TagDao
 import com.neillon.incomes_tracker.persistence.entities.IncomeEntity
 import com.neillon.incomes_tracker.persistence.entities.TagEntity
+import com.neillon.incomes_tracker.persistence.entities.converters.LocalDateConverter
+import dagger.Provides
+import javax.inject.Singleton
 
 @Database(
     entities = [
@@ -18,6 +22,7 @@ import com.neillon.incomes_tracker.persistence.entities.TagEntity
     version = RoomConstants.ROOM_VERSION,
     exportSchema = false
 )
+@TypeConverters(LocalDateConverter::class)
 abstract class IncomeDatabase: RoomDatabase() {
 
     abstract fun incomeDao(): IncomeDao
@@ -26,7 +31,9 @@ abstract class IncomeDatabase: RoomDatabase() {
     companion object {
         private lateinit var instance: IncomeDatabase
 
-        fun getInstance(context: Context): IncomeDatabase {
+        @Singleton
+        @Provides
+        fun provideDatabase(context: Context): IncomeDatabase {
             if (instance != null) {
                 return instance
             }
