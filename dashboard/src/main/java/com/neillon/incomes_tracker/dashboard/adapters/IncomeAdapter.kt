@@ -40,9 +40,7 @@ class IncomeAdapter(private var incomesList: ArrayList<IncomeRow>) :
     override fun onBindViewHolder(holder: IncomeCustomViewHolder, position: Int) {
         val incomeRow = incomesList[position]
 
-        if (incomeRow.type == IncomeRowType.ITEM) {
-            holder.bind(incomeRow)
-        }
+        holder.bind(incomeRow)
     }
 
     inner class IncomeViewHolder(view: View) : IncomeCustomViewHolder(view) {
