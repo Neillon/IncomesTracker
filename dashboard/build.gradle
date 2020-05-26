@@ -26,6 +26,8 @@ dependencies {
     implementation project(":app")
     implementation project(":common")
 
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout_version"
+
     // Material Design Components
     implementation "com.google.android.material:material:$material_design_version"
 
