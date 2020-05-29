@@ -11,21 +11,21 @@ import kotlinx.coroutines.flow.Flow
 abstract class IncomeDao : BaseDao<IncomeEntity> {
 
     @Transaction
-    @Query("SELECT * FROM income WHERE income_id = :id")
-    abstract suspend fun getById(id: Long): Flow<IncomeWithTags>
+    @Query("SELECT * FROM Income WHERE income_id = :id")
+    abstract suspend fun getById(id: Int): Flow<IncomeWithTags>
 
     @Transaction
-    @Query("SELECT * FROM income")
+    @Query("SELECT * FROM Income")
     abstract suspend fun getAll(): Flow<List<IncomeWithTags>>
 
     @Transaction
-    suspend fun updateAndReturn(entity: IncomeEntity): Flow<IncomeWithTags> {
+    open suspend fun updateAndReturn(entity: IncomeEntity): Flow<IncomeWithTags> {
         val id = update(entity)
         return getById(id)
     }
 
     @Transaction
-    suspend fun insertAndReturn(entity: IncomeEntity): Flow<IncomeWithTags> {
+    open suspend fun insertAndReturn(entity: IncomeEntity): Flow<IncomeWithTags> {
         val id = insert(entity)
         return getById(id)
     }

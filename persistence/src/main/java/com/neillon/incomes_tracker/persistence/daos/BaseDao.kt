@@ -7,10 +7,10 @@ import com.neillon.incomes_tracker.persistence.entities.TagEntity
 interface BaseDao<T> {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(entity: T): Long
+    fun insert(entity: T): Int
 
     @Update
-    fun update(vararg entity: T): Long
+    fun update(vararg entity: T): Int
 
     @Delete
     fun remove(vararg entity: T)
