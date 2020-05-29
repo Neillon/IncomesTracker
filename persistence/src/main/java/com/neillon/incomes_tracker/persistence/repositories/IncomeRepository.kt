@@ -9,9 +9,8 @@ import com.neillon.incomes_tracker.persistence.extensions.toDomain
 import com.neillon.incomes_tracker.persistence.extensions.toEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
-class IncomeRepository @Inject constructor(
+class IncomeRepository constructor(
     private var database: IncomeDatabase
 ) : Repository<Income> {
 
