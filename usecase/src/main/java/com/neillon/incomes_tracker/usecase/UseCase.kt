@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import kotlin.coroutines.CoroutineContext
 
 abstract class UseCase<in Params, Result>(
-    private val coroutineContext: CoroutineContext
+    open val coroutineContext: CoroutineContext
 ) {
     abstract fun invoke(params: Params? = null): LiveData<Result>
 }

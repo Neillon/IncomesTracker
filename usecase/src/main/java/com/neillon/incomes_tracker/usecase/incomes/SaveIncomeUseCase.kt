@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.map
 import kotlin.coroutines.CoroutineContext
 
 class SaveIncomeUseCase(
-    private val coroutineContext: CoroutineContext,
+    override val coroutineContext: CoroutineContext,
     private val incomeRepository: Repository<Income>
 ) : UseCase<SaveIncomeUseCase.Params, Income>(coroutineContext) {
 
