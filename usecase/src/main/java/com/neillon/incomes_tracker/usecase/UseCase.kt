@@ -6,5 +6,5 @@ import kotlin.coroutines.CoroutineContext
 abstract class UseCase<in Params, Result>(
     private val coroutineContext: CoroutineContext
 ) {
-    abstract fun doWork(params: Params? = null): LiveData<Result>
+    abstract fun invoke(params: Params? = null): LiveData<Result>
 }

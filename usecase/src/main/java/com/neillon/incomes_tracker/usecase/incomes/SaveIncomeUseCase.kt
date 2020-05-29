@@ -17,10 +17,10 @@ class SaveIncomeUseCase(
 
     data class Params(var income: Income)
 
-    override fun doWork(params: Params?): LiveData<Income> {
+    override fun invoke(params: Params?): LiveData<Income> {
         CoroutineScope(coroutineContext + Dispatchers.IO).launch {
             incomeRepository.insert(params!!.income)
-                .map { it }
+                .map { it!! }
                 .asLiveData(coroutineContext)
         }
     }
