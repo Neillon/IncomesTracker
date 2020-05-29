@@ -11,8 +11,6 @@ import com.neillon.incomes_tracker.persistence.daos.TagDao
 import com.neillon.incomes_tracker.persistence.entities.IncomeEntity
 import com.neillon.incomes_tracker.persistence.entities.TagEntity
 import com.neillon.incomes_tracker.persistence.entities.converters.LocalDateConverter
-import dagger.Provides
-import javax.inject.Singleton
 
 @Database(
     entities = [
@@ -23,7 +21,7 @@ import javax.inject.Singleton
     exportSchema = false
 )
 @TypeConverters(LocalDateConverter::class)
-abstract class IncomeDatabase: RoomDatabase() {
+abstract class IncomeDatabase : RoomDatabase() {
 
     abstract fun incomeDao(): IncomeDao
     abstract fun tagDao(): TagDao
@@ -31,12 +29,9 @@ abstract class IncomeDatabase: RoomDatabase() {
     companion object {
         private lateinit var instance: IncomeDatabase
 
-        @Singleton
-        @Provides
-        fun provideDatabase(context: Context): IncomeDatabase {
-            if (instance != null) {
+        fun getInstance(context: Context): IncomeDatabase {
+            if (instance != null)
                 return instance
-            }
 
             instance = Room
                 .databaseBuilder(context, IncomeDatabase::class.java, "incomes.db")

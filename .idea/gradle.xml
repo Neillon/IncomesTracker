@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/login" />
             <option value="$PROJECT_DIR$/persistence" />
             <option value="$PROJECT_DIR$/router" />
+            <option value="$PROJECT_DIR$/usecase" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -1,3 +1,5 @@
+include ':usecase'
+include ':usecase'
 include ':persistence'
 include ':domain'
 include ':dashboard'

@@ -8,9 +8,7 @@ import com.neillon.incomes_tracker.persistence.extensions.toEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 class TagRepository @Inject constructor(
     private val database: IncomeDatabase
 ) : Repository<Tag> {

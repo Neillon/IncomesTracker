@@ -1,6 +1,7 @@
 apply plugin: "com.android.dynamic-feature"
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -25,6 +26,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":app")
     implementation project(":common")
+    implementation project(":persistence")
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout_version"
 
@@ -33,4 +35,5 @@ dependencies {
 
     // Timber
     implementation "com.jakewharton.timber:timber:$timber_version"
+
 }
