@@ -24,7 +24,7 @@ class IncomeRepository constructor(
         dao.getAll().map { it.toDomain() }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override suspend fun getById(id: Long): Flow<Income?> =
+    override suspend fun getById(id: Int): Flow<Income?> =
         dao.getById(id).map { it.toDomain() }
 
     @RequiresApi(Build.VERSION_CODES.O)

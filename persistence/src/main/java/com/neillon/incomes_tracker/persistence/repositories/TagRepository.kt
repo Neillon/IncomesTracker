@@ -19,7 +19,7 @@ class TagRepository constructor(
     override suspend fun listAll(): Flow<List<Tag>?> =
         dao.getAll().map { it!!.toDomain() }
 
-    override suspend fun getById(id: Long): Flow<Tag?> =
+    override suspend fun getById(id: Int): Flow<Tag?> =
         dao.getById(id).map { it.toDomain() }
 
     override suspend fun remove(tag: Tag) =
