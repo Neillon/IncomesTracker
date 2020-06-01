@@ -44,7 +44,13 @@ dependencies {
     // Koin for Android
     implementation "org.koin:koin-android:$koin_version"
 
+    /**
+        TESTS
+     */
+    // JUnit
     testImplementation "junit:junit:$junit_version"
-    testImplementation "org.mockito:mockito-core:$mockito_version"
     androidTestImplementation "androidx.test.ext:junit:$testrunner_version"
+
+    // Mockito
+    testImplementation "org.mockito:mockito-core:$mockito_version"
 }
