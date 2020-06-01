@@ -8,8 +8,8 @@ import com.neillon.incomes_tracker.persistence.entities.TagEntity
 data class IncomeWithTags(
     @Embedded var income: IncomeEntity,
     @Relation(
-        parentColumn = "id",
-        entityColumn = "incomeId"
+        parentColumn = "income_id",
+        entityColumn = "tag_income_id"
     )
     var tags: List<TagEntity>
 )

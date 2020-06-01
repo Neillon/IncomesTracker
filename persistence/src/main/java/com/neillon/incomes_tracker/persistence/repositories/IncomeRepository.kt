@@ -8,7 +8,7 @@ import com.neillon.incomes_tracker.persistence.databases.IncomeDatabase
 import com.neillon.incomes_tracker.persistence.extensions.toDomain
 import com.neillon.incomes_tracker.persistence.extensions.toEntity
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.flow
 
 class IncomeRepository constructor(
     private var database: IncomeDatabase
@@ -17,22 +17,27 @@ class IncomeRepository constructor(
     private val dao = database.incomeDao()
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override suspend fun insert(income: Income) =
-        dao.insertAndReturn(income.toEntity()).map { it.toDomain() }
-
-    override suspend fun listAll(): Flow<List<Income>?> =
-        dao.getAll().map { it.toDomain() }
+    override suspend fun insert(income: Income): Flow<Income> = flow {
+        dao.insertAndReturn(income.toEntity()).toDomain()
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override suspend fun getById(id: Int): Flow<Income?> =
-        dao.getById(id).map { it.toDomain() }
+    override suspend fun listAll(): Flow<List<Income>> = flow {
+        dao.getAll().toDomain()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override suspend fun getById(id: Long): Flow<Income> = flow {
+        dao.getById(id).toDomain()
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override suspend fun remove(income: Income) =
         dao.remove(income.toEntity())
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override suspend fun update(income: Income) =
-        dao.updateAndReturn(income.toEntity()).map { it.toDomain() }
+    override suspend fun update(income: Income): Flow<Income> = flow {
+        dao.updateAndReturn(income.toEntity()).toDomain()
+    }
 
 }

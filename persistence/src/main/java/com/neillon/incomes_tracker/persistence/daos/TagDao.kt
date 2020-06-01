@@ -4,27 +4,26 @@ import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
 import com.neillon.incomes_tracker.persistence.entities.TagEntity
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 abstract class TagDao : BaseDao<TagEntity> {
 
     @Transaction
     @Query("SELECT * FROM tag WHERE tag_id = :id")
-    abstract suspend fun getById(id: Int): Flow<TagEntity>
+    abstract suspend fun getById(id: Long): TagEntity
 
     @Transaction
-    @Query("SELECT * FROM income")
-    abstract suspend fun getAll(): Flow<List<TagEntity>>
+    @Query("SELECT * FROM tag")
+    abstract suspend fun getAll(): List<TagEntity>
 
     @Transaction
-    open suspend fun updateAndReturn(entity: TagEntity): Flow<TagEntity> {
-        val id = update(entity)
-        return getById(id)
+    open suspend fun updateAndReturn(entity: TagEntity): TagEntity {
+        update(entity)
+        return getById(entity.id)
     }
 
     @Transaction
-    open suspend fun insertAndReturn(entity: TagEntity): Flow<TagEntity> {
+    open suspend fun insertAndReturn(entity: TagEntity): TagEntity {
         val id = insert(entity)
         return getById(id)
     }

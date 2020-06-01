@@ -12,20 +12,20 @@ abstract class IncomeDao : BaseDao<IncomeEntity> {
 
     @Transaction
     @Query("SELECT * FROM Income WHERE income_id = :id")
-    abstract suspend fun getById(id: Int): Flow<IncomeWithTags>
+    abstract suspend fun getById(id: Long): IncomeWithTags
 
     @Transaction
     @Query("SELECT * FROM Income")
-    abstract suspend fun getAll(): Flow<List<IncomeWithTags>>
+    abstract suspend fun getAll(): List<IncomeWithTags>
 
     @Transaction
-    open suspend fun updateAndReturn(entity: IncomeEntity): Flow<IncomeWithTags> {
-        val id = update(entity)
-        return getById(id)
+    open suspend fun updateAndReturn(entity: IncomeEntity): IncomeWithTags {
+        update(entity)
+        return getById(entity.id)
     }
 
     @Transaction
-    open suspend fun insertAndReturn(entity: IncomeEntity): Flow<IncomeWithTags> {
+    open suspend fun insertAndReturn(entity: IncomeEntity): IncomeWithTags {
         val id = insert(entity)
         return getById(id)
     }

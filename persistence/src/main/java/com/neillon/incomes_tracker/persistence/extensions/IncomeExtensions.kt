@@ -25,8 +25,6 @@ fun IncomeEntity.toDomain(): Income =
         tags = emptyList()
     )
 
-fun List<IncomeWithTags>.toDomain() = this.map { it.toDomain() }
-
 @RequiresApi(Build.VERSION_CODES.O)
 fun IncomeWithTags.toDomain(): Income =
     Income(
@@ -36,3 +34,6 @@ fun IncomeWithTags.toDomain(): Income =
         value = this.income.value,
         tags = this.tags.map { it.toDomain() }
     )
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun List<IncomeWithTags>.toDomain() = this.map { it.toDomain() }
