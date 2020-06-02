@@ -9,7 +9,7 @@ import java.time.LocalDate
 data class IncomeEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "income_id")
-    var id: Long,
+    var id: Long? = null,
 
     @ColumnInfo(name = "income_description")
     var description: String,

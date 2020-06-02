@@ -21,7 +21,7 @@ abstract class IncomeDao : BaseDao<IncomeEntity> {
     @Transaction
     open suspend fun updateAndReturn(entity: IncomeEntity): IncomeWithTags {
         update(entity)
-        return getById(entity.id)
+        return getById(entity.id ?: 0)
     }
 
     @Transaction

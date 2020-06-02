@@ -18,7 +18,7 @@ fun Income.toEntity(): IncomeEntity =
 
 fun IncomeEntity.toDomain(): Income =
     Income(
-        id = this.id,
+        id = this.id ?: 0,
         description = this.description,
         value = this.value,
         date = this.date,
@@ -28,7 +28,7 @@ fun IncomeEntity.toDomain(): Income =
 @RequiresApi(Build.VERSION_CODES.O)
 fun IncomeWithTags.toDomain(): Income =
     Income(
-        id = this.income.id,
+        id = this.income.id ?: 0,
         date = this.income.date,
         description = this.income.description,
         value = this.income.value,

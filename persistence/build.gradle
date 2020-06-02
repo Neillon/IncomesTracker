@@ -23,6 +23,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
@@ -44,13 +50,14 @@ dependencies {
     // Koin for Android
     implementation "org.koin:koin-android:$koin_version"
 
-    /**
-        TESTS
-     */
+    /** TESTS */
     // JUnit
     testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test:runner:$testrunner_version"
     androidTestImplementation "androidx.test.ext:junit:$testrunner_version"
-
+    androidTestImplementation "androidx.arch.core:core-testing:$core_testing_version"
+    // Hamcrest
+    testImplementation "org.hamcrest:hamcrest:$hamcrest_version"
     // Mockito
     testImplementation "org.mockito:mockito-core:$mockito_version"
 }
