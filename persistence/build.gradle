@@ -41,6 +41,7 @@ dependencies {
 
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
 
     // Room
     implementation "androidx.room:room-runtime:$room_version"
@@ -58,6 +59,4 @@ dependencies {
     androidTestImplementation "androidx.arch.core:core-testing:$core_testing_version"
     // Hamcrest
     testImplementation "org.hamcrest:hamcrest:$hamcrest_version"
-    // Mockito
-    testImplementation "org.mockito:mockito-core:$mockito_version"
 }

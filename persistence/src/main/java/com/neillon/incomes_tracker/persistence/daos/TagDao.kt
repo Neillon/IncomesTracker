@@ -19,7 +19,7 @@ abstract class TagDao : BaseDao<TagEntity> {
     @Transaction
     open suspend fun updateAndReturn(entity: TagEntity): TagEntity {
         update(entity)
-        return getById(entity.id)
+        return getById(entity.id ?: 0)
     }
 
     @Transaction

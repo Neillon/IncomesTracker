@@ -6,6 +6,7 @@ import com.neillon.incomes_tracker.domain.contracts.Repository
 import com.neillon.incomes_tracker.persistence.databases.IncomeDatabase
 import com.neillon.incomes_tracker.persistence.repositories.IncomeRepository
 import com.neillon.incomes_tracker.persistence.repositories.TagRepository
+import kotlinx.coroutines.Dispatchers
 import org.koin.dsl.module
 
 object PersistenceModule {
@@ -16,11 +17,11 @@ object PersistenceModule {
         }
 
         single {
-            IncomeRepository(database = get()) as Repository<Income>
+            IncomeRepository(database = get(), dispatcher = Dispatchers.IO) as Repository<Income>
         }
 
         single {
-            TagRepository(database = get()) as Repository<Tag>
+            TagRepository(database = get(), dispatcher = Dispatchers.IO) as Repository<Tag>
         }
     }
 

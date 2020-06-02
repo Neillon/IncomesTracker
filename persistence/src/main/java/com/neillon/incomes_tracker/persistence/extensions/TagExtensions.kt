@@ -5,7 +5,7 @@ import com.neillon.incomes_tracker.persistence.entities.TagEntity
 
 fun TagEntity.toDomain() =
     Tag(
-        id = this.id,
+        id = this.id ?: 0,
         description = this.description,
         incomeId = this.incomeId
     )

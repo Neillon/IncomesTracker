@@ -21,7 +21,7 @@ import androidx.room.PrimaryKey
 data class TagEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "tag_id")
-    var id: Long,
+    var id: Long? = null,
 
     @ColumnInfo(name = "tag_description")
     var description: String,

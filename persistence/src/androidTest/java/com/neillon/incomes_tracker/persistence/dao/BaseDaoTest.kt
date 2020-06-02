@@ -1,34 +1,26 @@
-package com.neillon.incomes_tracker.persistence
+package com.neillon.incomes_tracker.persistence.dao
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.neillon.incomes_tracker.persistence.databases.IncomeDatabase
-import com.neillon.incomes_tracker.persistence.entities.IncomeEntity
-import kotlinx.coroutines.runBlocking
-import org.hamcrest.CoreMatchers.not
-import org.hamcrest.CoreMatchers.nullValue
-import org.hamcrest.MatcherAssert.assertThat
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
-import org.junit.Test
 import org.junit.runner.RunWith
 import java.time.LocalDate
+import java.util.concurrent.Executors
 
 @RunWith(AndroidJUnit4::class)
-class IncomeDaoTest {
+abstract class BaseDaoTest {
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private lateinit var mIncomeDatabase: IncomeDatabase
-    private val incomeMock = IncomeEntity(
-        description = "Income Test",
-        value = 20.0,
-        date = LocalDate.now()
-    )
+    lateinit var mIncomeDatabase: IncomeDatabase
 
     @Before
     fun setup() {
@@ -37,17 +29,20 @@ class IncomeDaoTest {
                 InstrumentationRegistry.getInstrumentation().context,
                 IncomeDatabase::class.java
             )
+            .setTransactionExecutor(Executors.newSingleThreadExecutor())
+            .addCallback(object : RoomDatabase.Callback() {
+                override fun onCreate(db: SupportSQLiteDatabase) {
+                    super.onCreate(db)
+                    db.execSQL(
+                        "insert into income(income_id, income_description, income_value, income_date) values(1, 'Income Test', 20.0, '${LocalDate.now()}')"
+                    )
+                }
+            })
             .build()
     }
 
     @After
     fun finish() {
         mIncomeDatabase.close()
-    }
-
-    @Test
-    fun incomeDao_insert_mustReturnIncome() = runBlocking {
-        val resultData = mIncomeDatabase.incomeDao().insertAndReturn(incomeMock)
-        assertThat(resultData, not(nullValue()))
     }
 }

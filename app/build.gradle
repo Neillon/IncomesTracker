@@ -33,6 +33,7 @@ android {
     }
 
     dynamicFeatures = [":login", ':dashboard']
+
 }
 
 dependencies {
