@@ -3,6 +3,7 @@ package com.neillon.incomes_tracker.persistence.repositories
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.neillon.incomes_tracker.domain.Income
+import com.neillon.incomes_tracker.domain.contracts.IIncomeRepository
 import com.neillon.incomes_tracker.domain.contracts.Repository
 import com.neillon.incomes_tracker.persistence.databases.IncomeDatabase
 import com.neillon.incomes_tracker.persistence.extensions.toDomain
@@ -15,7 +16,7 @@ import kotlinx.coroutines.flow.flowOn
 class IncomeRepository constructor(
     var database: IncomeDatabase,
     var dispatcher: CoroutineDispatcher
-) : Repository<Income> {
+) : IIncomeRepository {
 
     private val dao = database.incomeDao()
 

@@ -1,8 +1,7 @@
 package com.neillon.incomes_tracker.persistence.di
 
-import com.neillon.incomes_tracker.domain.Income
-import com.neillon.incomes_tracker.domain.Tag
-import com.neillon.incomes_tracker.domain.contracts.Repository
+import com.neillon.incomes_tracker.domain.contracts.IIncomeRepository
+import com.neillon.incomes_tracker.domain.contracts.ITagRepository
 import com.neillon.incomes_tracker.persistence.databases.IncomeDatabase
 import com.neillon.incomes_tracker.persistence.repositories.IncomeRepository
 import com.neillon.incomes_tracker.persistence.repositories.TagRepository
@@ -17,11 +16,11 @@ object PersistenceModule {
         }
 
         single {
-            IncomeRepository(database = get(), dispatcher = Dispatchers.IO) as Repository<Income>
+            IncomeRepository(database = get(), dispatcher = Dispatchers.IO) as IIncomeRepository
         }
 
         single {
-            TagRepository(database = get(), dispatcher = Dispatchers.IO) as Repository<Tag>
+            TagRepository(database = get(), dispatcher = Dispatchers.IO) as ITagRepository
         }
     }
 
