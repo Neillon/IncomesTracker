@@ -1,20 +1,15 @@
 package com.neillon.incomes_tracker.persistence.dao
 
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.neillon.incomes_tracker.persistence.entities.IncomeEntity
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.*
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
-import org.junit.runner.RunWith
 import java.time.LocalDate
 
-@RunWith(AndroidJUnit4::class)
 class IncomeDaoTest : BaseDaoTest() {
 
     @Test
-    @ExperimentalCoroutinesApi
     fun incomeDao_insert_mustReturnIncome() = runBlocking {
         val resultData = mIncomeDatabase.incomeDao().insertAndReturn(incomeMock)
         incomeMock.id = resultData.income.id
@@ -25,12 +20,10 @@ class IncomeDaoTest : BaseDaoTest() {
     }
 
     @Test
-    @ExperimentalCoroutinesApi
     fun incomeDao_update_mustReturnIncome() = runBlocking {
-        val originalIncome = mIncomeDatabase.incomeDao().insertAndReturn(incomeMock)
+        val originalIncome = mIncomeDatabase.incomeDao().getById(1L)
 
-        val incomeToUpdate = incomeMock.apply {
-            id = originalIncome.income.id
+        val incomeToUpdate = originalIncome.income.apply {
             description = "Updated description for test"
         }
 
