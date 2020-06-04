@@ -6,6 +6,6 @@ interface Repository<T> {
     suspend fun insert(entity: T): T
     suspend fun update(entity: T): T
     suspend fun remove(entity: T)
-    suspend fun listAll(): Flow<List<T>>
+    fun listAll(): Flow<List<T>>
     suspend fun getById(id: Long): T
 }

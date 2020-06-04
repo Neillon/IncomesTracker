@@ -22,7 +22,7 @@ class TagRepository constructor(
         return dao.insertAndReturn(*tagsToInsert).toDomain()
     }
 
-    override suspend fun listAll(): Flow<List<Tag>> =
+    override fun listAll(): Flow<List<Tag>> =
         throw NotImplementedError("Get all tags was not implemented yet.")
 
     override suspend fun getById(id: Long): Tag = dao.getById(id).toDomain()

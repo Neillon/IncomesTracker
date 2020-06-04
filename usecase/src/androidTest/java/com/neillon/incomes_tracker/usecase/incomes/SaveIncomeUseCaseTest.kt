@@ -9,8 +9,7 @@ import com.neillon.incomes_tracker.domain.contracts.ITagRepository
 import com.neillon.incomes_tracker.usecase.TestCoroutineRule
 import io.mockk.coEvery
 import io.mockk.mockk
-import org.hamcrest.CoreMatchers.not
-import org.hamcrest.CoreMatchers.nullValue
+import org.hamcrest.CoreMatchers.*
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Rule
 import org.junit.Test
@@ -48,13 +47,21 @@ class SaveIncomeUseCaseTest {
                         tag
                     }
 
+            _income.tags = _tags
+
             val sut = SaveIncomeUseCase(
                 incomeRepository = mockIncomeRepository,
-                tagRepository = mockTagRepository
+                tagRepository = mockTagRepository,
+                coroutineScope = this
             )
 
             val result = sut.invoke(SaveIncomeUseCase.Params(_income))
 
             assertThat(result.value, not(nullValue()))
+            assertThat(result.value?.id, `is`(_income.id))
+            assertThat(result.value?.description, `is`(_income.description))
+            assertThat(result.value?.value, `is`(_income.value))
+            assertThat(result.value?.date, `is`(_income.date))
+            assertThat(result.value?.tags, `is`(_tags))
         }
 }

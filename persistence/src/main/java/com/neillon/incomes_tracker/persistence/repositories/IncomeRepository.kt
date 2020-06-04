@@ -24,10 +24,10 @@ class IncomeRepository constructor(
         dao.insertAndReturn(income.toEntity()).toDomain()
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override suspend fun listAll(): Flow<List<Income>> = flow {
+    override fun listAll(): Flow<List<Income>> = flow {
         val data = dao.getAll().toDomain()
         emit(data)
-    }.flowOn(dispatcher)
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override suspend fun getById(id: Long): Income = dao.getById(id).toDomain()
