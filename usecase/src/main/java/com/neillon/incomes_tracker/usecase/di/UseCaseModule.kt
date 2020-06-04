@@ -1,5 +1,6 @@
 package com.neillon.incomes_tracker.usecase.di
 
+import com.neillon.incomes_tracker.usecase.incomes.ListAllIncomesUseCase
 import com.neillon.incomes_tracker.usecase.incomes.SaveIncomeUseCase
 import kotlinx.coroutines.Dispatchers
 import org.koin.dsl.module
@@ -12,6 +13,13 @@ object UseCaseModule {
             SaveIncomeUseCase(
                 incomeRepository = get(),
                 tagRepository = get()
+            )
+        }
+
+        factory {
+            ListAllIncomesUseCase(
+                incomeRepository = get(),
+                coroutineContext = Dispatchers.IO
             )
         }
 
