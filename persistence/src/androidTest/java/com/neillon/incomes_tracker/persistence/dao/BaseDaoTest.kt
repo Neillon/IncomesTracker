@@ -33,9 +33,8 @@ abstract class BaseDaoTest {
             .addCallback(object : RoomDatabase.Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
-                    db.execSQL(
-                        "insert into income(income_id, income_description, income_value, income_date) values(1, 'Income Test', 20.0, '${LocalDate.now()}')"
-                    )
+                    db.execSQL("insert into income(income_id, income_description, income_value, income_date) values(1, 'Test Income', 20.0, '${LocalDate.now()}')")
+                    db.execSQL("insert into tag(tag_id, tag_description, tag_income_id) values(1, 'Test Tag', 1)")
                 }
             })
             .build()

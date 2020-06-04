@@ -9,19 +9,19 @@ import org.junit.Test
 class TagDaoTest : BaseDaoTest() {
 
     @Test
-    fun tagDao_insert_mustReturnIncome() = runBlocking {
+    fun tagDao_insert_mustReturnTag() = runBlocking {
         val resultData = mIncomeDatabase.tagDao().insertAndReturn(tagMock)
-        tagMock.id = resultData.id
+        tagMock.id = resultData.first().id
 
         assertThat(resultData, not(nullValue()))
-        assertThat(resultData, equalTo(tagMock))
+        assertThat(resultData.first(), equalTo(tagMock))
     }
 
     @Test
-    fun tagDao_update_mustReturnIncome() = runBlocking {
-        val originalIncome = mIncomeDatabase.tagDao().getById(1L)
+    fun tagDao_update_mustReturnTag() = runBlocking {
+        val originalTag = mIncomeDatabase.tagDao().getById(1L)
 
-        val tagToUpdate = tagMock.apply {
+        val tagToUpdate = originalTag.apply {
             description = "Updated description for test"
         }
 

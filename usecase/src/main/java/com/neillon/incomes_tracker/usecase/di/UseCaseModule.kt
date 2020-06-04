@@ -10,7 +10,6 @@ object UseCaseModule {
 
         factory {
             SaveIncomeUseCase(
-                coroutineContext = Dispatchers.IO,
                 incomeRepository = get(),
                 tagRepository = get()
             )

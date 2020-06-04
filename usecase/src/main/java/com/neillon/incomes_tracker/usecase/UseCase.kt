@@ -1,10 +1,10 @@
 package com.neillon.incomes_tracker.usecase
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import kotlin.coroutines.CoroutineContext
 
 abstract class UseCase<in Params, Result>(
-    open val coroutineContext: CoroutineContext
+    open val coroutineContext: CoroutineContext?
 ) {
-    abstract fun invoke(params: Params? = null): LiveData<Result>
+    abstract suspend fun invoke(params: Params? = null): MutableLiveData<Result>
 }

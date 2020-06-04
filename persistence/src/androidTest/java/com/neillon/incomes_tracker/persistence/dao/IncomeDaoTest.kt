@@ -31,7 +31,6 @@ class IncomeDaoTest : BaseDaoTest() {
 
         assertThat(updatedIncome.income, not(nullValue()))
         assertThat(updatedIncome.income, equalTo(incomeToUpdate))
-        assertThat(updatedIncome.tags, `is`(emptyList()))
     }
 
     companion object {

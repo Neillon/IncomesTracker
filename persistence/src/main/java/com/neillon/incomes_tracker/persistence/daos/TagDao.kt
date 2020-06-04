@@ -10,7 +10,7 @@ import com.neillon.incomes_tracker.persistence.entities.TagEntity
 abstract class TagDao : BaseDao<TagEntity> {
 
     @Insert
-    abstract suspend fun insert(vararg entity:TagEntity): List<Long>
+    abstract suspend fun insert(vararg entity: TagEntity): List<Long>
 
     @Transaction
     @Query("SELECT * FROM tag WHERE tag_id in (:ids)")

@@ -20,7 +20,7 @@ object PersistenceModule {
         }
 
         single {
-            TagRepository(database = get(), dispatcher = Dispatchers.IO) as ITagRepository
+            TagRepository(database = get()) as ITagRepository
         }
     }
 
