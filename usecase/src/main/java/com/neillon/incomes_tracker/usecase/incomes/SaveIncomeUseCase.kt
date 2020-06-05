@@ -6,21 +6,22 @@ import com.neillon.incomes_tracker.domain.contracts.IIncomeRepository
 import com.neillon.incomes_tracker.domain.contracts.ITagRepository
 import com.neillon.incomes_tracker.usecase.CoroutineUseCase
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class SaveIncomeUseCase(
-    override val coroutineScope: CoroutineScope,
     private val incomeRepository: IIncomeRepository,
     private val tagRepository: ITagRepository
-) : CoroutineUseCase<SaveIncomeUseCase.Params, Income>(coroutineScope) {
+) : CoroutineUseCase<SaveIncomeUseCase.Params, Income>() {
 
     data class Params(var income: Income)
 
-    override fun invoke(params: Params?): MutableLiveData<Income> {
+    override fun invoke(params: Params?, coroutineScope: CoroutineScope): MutableLiveData<Income> {
         val result = MutableLiveData<Income>()
         val income = params!!.income
 
-        runBlocking(coroutineScope.coroutineContext) {
+        coroutineScope.launch {
             val savedIncome = incomeRepository.insert(income)
 
             if (params.income.tags.isNotEmpty()) {
@@ -28,11 +29,8 @@ class SaveIncomeUseCase(
                 savedIncome.tags = savedTags
             }
             result.value = savedIncome
-            result
         }
 
         return result
     }
-
-
 }

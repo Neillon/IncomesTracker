@@ -51,11 +51,10 @@ class SaveIncomeUseCaseTest {
 
             val sut = SaveIncomeUseCase(
                 incomeRepository = mockIncomeRepository,
-                tagRepository = mockTagRepository,
-                coroutineScope = this
+                tagRepository = mockTagRepository
             )
 
-            val result = sut.invoke(SaveIncomeUseCase.Params(_income))
+            val result = sut.invoke(SaveIncomeUseCase.Params(_income), this)
 
             assertThat(result.value, not(nullValue()))
             assertThat(result.value?.id, `is`(_income.id))
