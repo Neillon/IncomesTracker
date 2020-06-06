@@ -4,4 +4,8 @@
     <string name="dashboard_welcome_message">Welcome back,</string>
     <string name="dashboard_balance_label">Your Balance</string>
 
+    <string name="income_value_question">How much did you spend?</string>
+    <string name="save_income">Save</string>
+    <string name="income_description_question">How did you spend?</string>
+
 </resources>

@@ -4,10 +4,6 @@ sealed class Feature() {
     abstract val entryActivityName: String
     val entryPackageName: String = BASE_PACKAGE
 
-    object Login : Feature() {
-        override val entryActivityName: String = LOGIN_ENTRYPOINT_CLASSNAME
-    }
-
     object Dashboard : Feature() {
         override val entryActivityName: String = DASHBOARD_ENTRYPOINT_CLASSNAME
     }

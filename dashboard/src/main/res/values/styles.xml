@@ -5,4 +5,23 @@
         <item name="android:fontFamily">@font/robot</item>
     </style>
 
+    <style name="EditTextIncomeValueStyle" parent="Widget.AppCompat.EditText" >
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_height">@dimen/edit_text_income_value_height</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/edit_text_income_value_text_size</item>
+        <item name="android:textColor">@color/darkGray</item>
+    </style>
+
+    <style name="RoundedBottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/background_bottom_sheet</item>
+    </style>
+
+    <style name="BottomSheetDialogStyle" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/RoundedBottomSheet</item>
+    </style>
+
+
 </resources>

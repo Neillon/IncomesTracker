@@ -36,4 +36,7 @@ dependencies {
     // Timber
     implementation "com.jakewharton.timber:timber:$timber_version"
 
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+
 }

@@ -38,7 +38,7 @@ open class DynamicFeatureActivity : AppCompatActivity(), RouterStatusListener {
                 }
                 SplitInstallSessionStatus.INSTALLED -> {
                     showInformationDialog("Installed")
-                    Router.navigateToFeature(this@DynamicFeatureActivity, Feature.Login)
+                    Router.navigateToFeature(this@DynamicFeatureActivity, Feature.Home)
                 }
                 SplitInstallSessionStatus.FAILED -> {
                     showInformationDialog("Failed to install.\nError: ${state.errorCode()}")

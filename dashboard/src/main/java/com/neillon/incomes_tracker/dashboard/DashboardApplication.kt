@@ -8,7 +8,7 @@ class DashboardApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        if (androidx.viewbinding.BuildConfig.DEBUG)
+        if (BuildConfig.DEBUG)
             Timber.plant(Timber.DebugTree())
     }
 }

@@ -1,7 +1,7 @@
-package com.neillon.incomes_tracker.dashboard.adapters
+package com.neillon.incomes_tracker.dashboard.adapters.callbacks
 
 import androidx.recyclerview.widget.DiffUtil
-import com.neillon.incomes_tracker.dashboard.adapterType.IncomeRow
+import com.neillon.incomes_tracker.dashboard.adapters.types.IncomeRow
 
 class IncomeRowDiffCallback(private val newRows: List<IncomeRow>, private val oldRows: List<IncomeRow>) : DiffUtil.Callback() {
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

@@ -32,7 +32,7 @@ class HomeActivity : DynamicFeatureActivity() {
             .addOnCompleteListener {
                 Router.navigateToFeature(this@HomeActivity, Feature.Dashboard)
             }
-            .addOnSuccessListener { toastAndLog("Loading $LOGIN_MODUlE_NAME") }
+            .addOnSuccessListener { finish() }
             .addOnFailureListener { toastAndLog("Failed to install module") }
     }
 

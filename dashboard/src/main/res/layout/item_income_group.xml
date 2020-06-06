@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:padding="8dp">
+    android:padding="8dp"
+    tools:context="com.neillon.incomes_tracker.dashboard.ui.incomes.activities.DashboardActivity">
 
     <View
         android:id="@+id/view"

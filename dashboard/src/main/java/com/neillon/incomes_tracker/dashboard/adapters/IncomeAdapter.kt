@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.neillon.incomes_tracker.dashboard.R
-import com.neillon.incomes_tracker.dashboard.adapterType.IncomeRow
-import com.neillon.incomes_tracker.dashboard.adapterType.IncomeRowType
+import com.neillon.incomes_tracker.dashboard.adapters.types.IncomeRow
+import com.neillon.incomes_tracker.dashboard.adapters.types.IncomeRowType
 import kotlinx.android.synthetic.main.item_income.view.*
 import kotlinx.android.synthetic.main.item_income_group.view.*
 
@@ -55,7 +55,7 @@ class IncomeAdapter(private var incomesList: ArrayList<IncomeRow>) :
 
     inner class IncomeHeaderViewHolder(view: View) : IncomeCustomViewHolder(view) {
         override fun bind(income: IncomeRow) {
-            itemView.mTextViewGroupDate.text = income.header
+            itemView.mTextViewGroupDate.text = income.groupHeader
         }
     }
 }

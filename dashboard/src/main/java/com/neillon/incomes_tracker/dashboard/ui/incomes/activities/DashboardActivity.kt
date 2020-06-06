@@ -1,19 +1,18 @@
-package com.neillon.incomes_tracker.dashboard.ui
+package com.neillon.incomes_tracker.dashboard.ui.incomes.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.neillon.incomes_tracker.dashboard.R
-import com.neillon.incomes_tracker.dashboard.adapterType.IncomeRow
-import com.neillon.incomes_tracker.dashboard.adapterType.IncomeRowType
 import com.neillon.incomes_tracker.dashboard.adapters.IncomeAdapter
+import com.neillon.incomes_tracker.dashboard.adapters.types.IncomeRow
+import com.neillon.incomes_tracker.dashboard.adapters.types.IncomeRowType
 import com.neillon.incomes_tracker.dashboard.binding.IncomeBinding
 import com.neillon.incomes_tracker.dashboard.databinding.ActivityDashboardBinding
 import com.neillon.incomes_tracker.dashboard.ui.extensions.hideBalance
 import com.neillon.incomes_tracker.dashboard.ui.extensions.showBalance
+import com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.NewIncomeBottomSheetDialog
 import kotlinx.android.synthetic.main.activity_dashboard.*
-import java.util.*
-import kotlin.collections.ArrayList
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -45,9 +44,11 @@ class DashboardActivity : AppCompatActivity() {
         val adapter = IncomeAdapter(incomesList)
         mRecyclerIncomes.layoutManager = LinearLayoutManager(this@DashboardActivity)
         mRecyclerIncomes.adapter = adapter
+
+        mFabNewIncome.setOnClickListener { NewIncomeBottomSheetDialog.open(supportFragmentManager) }
     }
 
-    fun generateData(): ArrayList<IncomeBinding> {
+    private fun generateData(): ArrayList<IncomeBinding> {
         return arrayListOf(
             IncomeBinding(
                 1,
@@ -114,7 +115,7 @@ class DashboardActivity : AppCompatActivity() {
             retorno.add(
                 IncomeRow(
                     type = IncomeRowType.GROUP,
-                    header = income.key,
+                    groupHeader = income.key,
                     item = null
                 )
             )
@@ -122,7 +123,7 @@ class DashboardActivity : AppCompatActivity() {
                 retorno.add(
                     IncomeRow(
                         type = IncomeRowType.ITEM,
-                        header = null,
+                        groupHeader = null,
                         item = it
                     )
                 )
