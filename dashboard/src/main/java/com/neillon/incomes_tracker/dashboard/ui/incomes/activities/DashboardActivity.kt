@@ -12,7 +12,9 @@ import com.neillon.incomes_tracker.dashboard.databinding.ActivityDashboardBindin
 import com.neillon.incomes_tracker.dashboard.ui.extensions.hideBalance
 import com.neillon.incomes_tracker.dashboard.ui.extensions.showBalance
 import com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.NewIncomeBottomSheetDialog
+import com.neillon.incomes_tracker.domain.Income
 import kotlinx.android.synthetic.main.activity_dashboard.*
+import timber.log.Timber
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -45,7 +47,14 @@ class DashboardActivity : AppCompatActivity() {
         mRecyclerIncomes.layoutManager = LinearLayoutManager(this@DashboardActivity)
         mRecyclerIncomes.adapter = adapter
 
-        mFabNewIncome.setOnClickListener { NewIncomeBottomSheetDialog.open(supportFragmentManager) }
+        mFabNewIncome.setOnClickListener {
+            NewIncomeBottomSheetDialog.open(supportFragmentManager, ::onSaveIncome)
+        }
+
+    }
+
+    private fun onSaveIncome(income: Income) {
+        Timber.d("Income $income")
     }
 
     private fun generateData(): ArrayList<IncomeBinding> {
