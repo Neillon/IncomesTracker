@@ -25,10 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
+        android:alpha="0.9"
         android:text="@string/income_value_question"
         android:textColor="@color/darkGray"
-        android:textSize="22sp"
-        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view3" />
 
@@ -51,10 +50,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:alpha="0.9"
         android:text="@string/income_description_question"
         android:textColor="@color/darkGray"
-        android:textSize="22sp"
-        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mEditTextIncomeValue" />
 
@@ -66,7 +64,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -91,9 +88,9 @@
         android:layout_marginBottom="16dp"
         android:text="@string/save_income"
         android:textColor="?attr/colorPrimary"
-        app:rippleColor="?attr/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mEditTextIncomeDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/mEditTextIncomeDescription"
+        app:rippleColor="?attr/colorPrimary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
