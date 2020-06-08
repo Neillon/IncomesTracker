@@ -7,5 +7,5 @@ data class Income(
     var description: String,
     var value: Double,
     var date: LocalDate,
-    var tags: List<Tag>
+    var tags: MutableList<Tag>
 )

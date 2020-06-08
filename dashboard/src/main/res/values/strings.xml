@@ -5,7 +5,10 @@
     <string name="dashboard_balance_label">Your Balance</string>
 
     <string name="income_value_question">How much did you spend?</string>
-    <string name="save_income">Save</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
     <string name="income_description_question">How did you spend?</string>
+    <string name="tags">Tags</string>
+    <string name="tag_name">New Tag</string>
 
 </resources>
