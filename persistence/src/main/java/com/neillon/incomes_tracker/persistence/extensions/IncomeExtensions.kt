@@ -22,7 +22,7 @@ fun IncomeEntity.toDomain(): Income =
         description = this.description,
         value = this.value,
         date = this.date,
-        tags = emptyList()
+        tags = mutableListOf()
     )
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -32,7 +32,7 @@ fun IncomeWithTags.toDomain(): Income =
         date = this.income.date,
         description = this.income.description,
         value = this.income.value,
-        tags = this.tags.map { it.toDomain() }
+        tags = this.tags.map { it.toDomain() }.toMutableList()
     )
 
 @RequiresApi(Build.VERSION_CODES.O)

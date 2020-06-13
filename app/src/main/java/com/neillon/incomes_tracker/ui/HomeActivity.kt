@@ -28,12 +28,15 @@ class HomeActivity : DynamicFeatureActivity() {
         ModuleRequester
             .addContext(this@HomeActivity)
             .addListener(this@HomeActivity)
-            .requestAndInstallModule(LOGIN_MODUlE_NAME)
+            .requestAndInstallModule(DASHBOARD_MODULE_NAME)
             .addOnCompleteListener {
-                Router.navigateToFeature(this@HomeActivity, Feature.Dashboard)
+                    Router.navigateToFeature(this@HomeActivity, Feature.Dashboard)
             }
             .addOnSuccessListener { finish() }
-            .addOnFailureListener { toastAndLog("Failed to install module") }
+            .addOnFailureListener {
+                toastAndLog("Failed to install module")
+                finish()
+            }
     }
 
     private fun toastAndLog(message: String) {

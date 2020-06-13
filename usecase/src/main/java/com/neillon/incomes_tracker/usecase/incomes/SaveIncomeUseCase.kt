@@ -26,7 +26,7 @@ class SaveIncomeUseCase(
 
             if (params.income.tags.isNotEmpty()) {
                 val savedTags = tagRepository.insert(params.income.tags)
-                savedIncome.tags = savedTags
+                savedIncome.tags = savedTags.toMutableList()
             }
             result.value = savedIncome
         }
