@@ -7,9 +7,10 @@ import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
 import com.neillon.incomes_tracker.router.Feature
 import com.neillon.incomes_tracker.router.ModuleRequester
 import com.neillon.incomes_tracker.router.Router
-import com.neillon.incomes_tracker.router.RouterStatusListener
+import com.neillon.incomes_tracker.router.contracts.RouterStatusListener
 
-open class DynamicFeatureActivity : AppCompatActivity(), RouterStatusListener {
+open class DynamicFeatureActivity : AppCompatActivity(),
+    RouterStatusListener {
 
     override fun onResume() {
         super.onResume()

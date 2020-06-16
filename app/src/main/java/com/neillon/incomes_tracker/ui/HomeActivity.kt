@@ -1,11 +1,11 @@
 package com.neillon.incomes_tracker.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.neillon.common.ui.DynamicFeatureActivity
 import com.neillon.incomes_tracker.databinding.ActivityHomeBinding
 import com.neillon.incomes_tracker.router.*
+import com.neillon.incomes_tracker.router.constants.DASHBOARD_MODULE_NAME
 import timber.log.Timber
 
 class HomeActivity : DynamicFeatureActivity() {

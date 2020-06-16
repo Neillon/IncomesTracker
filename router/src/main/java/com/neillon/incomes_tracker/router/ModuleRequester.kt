@@ -6,6 +6,7 @@ import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListener
 import com.google.android.play.core.tasks.Task
+import com.neillon.incomes_tracker.router.contracts.RouterStatusListener
 
 object ModuleRequester {
     private lateinit var mContext: Context

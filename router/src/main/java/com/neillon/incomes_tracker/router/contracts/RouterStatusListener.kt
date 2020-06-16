@@ -1,4 +1,4 @@
-package com.neillon.incomes_tracker.router
+package com.neillon.incomes_tracker.router.contracts
 
 import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListener
 
