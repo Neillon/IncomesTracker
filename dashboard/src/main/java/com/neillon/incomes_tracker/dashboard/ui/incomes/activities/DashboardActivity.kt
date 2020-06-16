@@ -9,9 +9,7 @@ import com.neillon.incomes_tracker.dashboard.R
 import com.neillon.incomes_tracker.dashboard.adapters.IncomeAdapter
 import com.neillon.incomes_tracker.dashboard.adapters.types.IncomeRow
 import com.neillon.incomes_tracker.dashboard.databinding.ActivityDashboardBinding
-import com.neillon.incomes_tracker.dashboard.ui.extensions.hideBalance
-import com.neillon.incomes_tracker.dashboard.ui.extensions.showBalance
-import com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.NewIncomeBottomSheetDialog
+import com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.income.NewIncomeBottomSheetDialog
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : AppCompatActivity() {

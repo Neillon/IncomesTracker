@@ -1,12 +1,9 @@
-package com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs
+package com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.tag
 
 import android.app.Dialog
 import android.content.Context
-import android.os.Bundle
-import android.provider.Settings.Global.getString
 import android.widget.Button
 import android.widget.EditText
-import com.google.android.material.button.MaterialButton
 import com.neillon.incomes_tracker.dashboard.R
 import com.neillon.incomes_tracker.domain.Tag
 

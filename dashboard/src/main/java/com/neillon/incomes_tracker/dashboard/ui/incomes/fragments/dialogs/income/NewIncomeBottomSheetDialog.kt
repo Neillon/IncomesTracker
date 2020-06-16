@@ -1,4 +1,4 @@
-package com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs
+package com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.income
 
 import android.os.Build
 import android.os.Bundle
@@ -12,6 +12,9 @@ import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.neillon.incomes_tracker.dashboard.R
+import com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.tag.NewTagDialog
+import com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.addMoneyWatcher
+import com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.createNewChipForTag
 import com.neillon.incomes_tracker.domain.Income
 import com.neillon.incomes_tracker.domain.Tag
 import kotlinx.android.synthetic.main.fragment_dialog_new_income_bottom_sheet.*
@@ -71,7 +74,9 @@ class NewIncomeBottomSheetDialog : BottomSheetDialogFragment() {
         }
 
         mChipNewTag.setOnClickListener {
-            NewTagDialog(it.context)
+            NewTagDialog(
+                it.context
+            )
                 .newInstance()
                 .onCancel(::onCancelNewTag)
                 .onSave { dialog, tag ->
@@ -100,10 +105,13 @@ class NewIncomeBottomSheetDialog : BottomSheetDialogFragment() {
         fun open(
             fragmentManagerInstance: FragmentManager?,
             saveCallback: (income: Income) -> Unit
-        ) = NewIncomeBottomSheetDialog().apply {
+        ) = NewIncomeBottomSheetDialog()
+            .apply {
             fragmentManagerInstance?.let {
                 onSave = saveCallback
-                show(it, TAG)
+                show(it,
+                    TAG
+                )
             }
         }
     }

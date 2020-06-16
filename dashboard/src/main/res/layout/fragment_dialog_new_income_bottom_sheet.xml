@@ -6,7 +6,7 @@
     android:id="@+id/mContentBottomSheetNewIncome"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.NewIncomeBottomSheetDialog">
+    tools:context="com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.income.NewIncomeBottomSheetDialog">
 
     <View
         android:id="@+id/view3"
