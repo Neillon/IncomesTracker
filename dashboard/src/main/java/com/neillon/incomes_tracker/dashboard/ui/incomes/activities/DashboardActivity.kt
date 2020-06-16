@@ -1,6 +1,7 @@
 package com.neillon.incomes_tracker.dashboard.ui.incomes.activities
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +13,6 @@ import com.neillon.incomes_tracker.dashboard.ui.extensions.hideBalance
 import com.neillon.incomes_tracker.dashboard.ui.extensions.showBalance
 import com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.NewIncomeBottomSheetDialog
 import kotlinx.android.synthetic.main.activity_dashboard.*
-import timber.log.Timber
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -36,7 +36,7 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun openNewIncomeDialog(view: View) {
         NewIncomeBottomSheetDialog.open(supportFragmentManager) {
-            Timber.d("Income $it")
+            Log.d("DashboardActivity", "Income $it")
         }
     }
 

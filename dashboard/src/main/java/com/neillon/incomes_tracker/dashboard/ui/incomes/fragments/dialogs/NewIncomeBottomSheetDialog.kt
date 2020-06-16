@@ -59,6 +59,12 @@ class NewIncomeBottomSheetDialog : BottomSheetDialogFragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initializeViews() {
+
+        mEditTextIncomeValue.addMoneyWatcher(
+            0.0,
+            onInputDouble = { _income.value = it }
+        )
+
         mButtonSaveIncome.setOnClickListener {
             dismiss()
             onSave(_income)
@@ -69,7 +75,10 @@ class NewIncomeBottomSheetDialog : BottomSheetDialogFragment() {
                 .newInstance()
                 .onCancel(::onCancelNewTag)
                 .onSave { dialog, tag ->
-                    _income.tags.add(tag)
+                    if (!_income.tags.map { it.description }.contains(tag.description)) {
+                        _income.tags.add(tag)
+                    }
+
                     addNewTagChip(it, tag)
                     dialog.dismiss()
                 }

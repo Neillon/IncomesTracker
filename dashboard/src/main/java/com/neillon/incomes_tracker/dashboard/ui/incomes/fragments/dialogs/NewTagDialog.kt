@@ -3,6 +3,7 @@ package com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.provider.Settings.Global.getString
 import android.widget.Button
 import android.widget.EditText
 import com.google.android.material.button.MaterialButton
@@ -24,9 +25,9 @@ class NewTagDialog(context: Context) : Dialog(context) {
     fun newInstance(): NewTagDialog {
         setContentView(R.layout.dialog_new_tag_template)
 
-        mEditTextNewTagDescription = findViewById<EditText>(R.id.mEditTextTagDescription)
-        mButtonSave = findViewById<Button>(R.id.mButtonSaveTagDialog)
-        mButtonCancel = findViewById<Button>(R.id.mButtonCancelDialog)
+        mEditTextNewTagDescription = findViewById(R.id.mEditTextTagDescription)
+        mButtonSave = findViewById(R.id.mButtonSaveTagDialog)
+        mButtonCancel = findViewById(R.id.mButtonCancelDialog)
         return this
     }
 

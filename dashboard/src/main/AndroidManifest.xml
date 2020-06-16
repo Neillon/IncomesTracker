@@ -13,10 +13,11 @@
         <dist:fusing dist:include="true" />
     </dist:module>
 
-    <application
-        android:theme="@style/DashboardLightTheme">
+    <application android:theme="@style/DashboardLightTheme">
 
-        <activity android:name=".ui.incomes.activities.DashboardActivity" android:theme="@style/DashboardLightTheme"></activity>
+        <activity
+            android:name=".ui.incomes.activities.DashboardActivity"
+            android:theme="@style/DashboardLightTheme"></activity>
     </application>
 
 </manifest>

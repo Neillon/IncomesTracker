@@ -45,9 +45,6 @@ dependencies {
     // Material Design Components
     implementation "com.google.android.material:material:$material_design_version"
 
-    // Timber
-    implementation "com.jakewharton.timber:timber:$timber_version"
-
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
 

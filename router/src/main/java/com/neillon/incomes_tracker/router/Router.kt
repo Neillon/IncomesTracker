@@ -9,13 +9,8 @@ import org.koin.dsl.koinApplication
 object Router {
 
     fun navigateToFeature(activity: Activity, feature: Feature, flags: Int = 0) {
-
-        koinApplication {
-            unloadKoinModules(feature.modules)
-        }
-        koinApplication {
-            loadKoinModules(feature.modules)
-        }
+        koinApplication { unloadKoinModules(feature.modules) }
+        koinApplication { loadKoinModules(feature.modules) }
 
         val intent = feature.makeNewIntent(flags)
 
