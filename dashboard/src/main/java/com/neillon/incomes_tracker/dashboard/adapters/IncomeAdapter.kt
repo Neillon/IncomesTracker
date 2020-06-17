@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.neillon.incomes_tracker.dashboard.R
-import com.neillon.incomes_tracker.dashboard.adapters.types.IncomeRow
-import com.neillon.incomes_tracker.dashboard.adapters.types.IncomeRowType
+import com.neillon.ioncomes_tracker.presentation.types.IncomeRow
+import com.neillon.ioncomes_tracker.presentation.types.IncomeRowType
 import kotlinx.android.synthetic.main.item_income.view.*
 import kotlinx.android.synthetic.main.item_income_group.view.*
 
@@ -14,8 +14,10 @@ abstract class IncomeCustomViewHolder(itemView: View) : RecyclerView.ViewHolder(
     abstract fun bind(income: IncomeRow);
 }
 
-class IncomeAdapter(private var incomesList: ArrayList<IncomeRow>) :
+class IncomeAdapter() :
     RecyclerView.Adapter<IncomeCustomViewHolder>() {
+
+    private var incomesList = mutableListOf<IncomeRow>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IncomeCustomViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -41,6 +43,12 @@ class IncomeAdapter(private var incomesList: ArrayList<IncomeRow>) :
         val incomeRow = incomesList[position]
 
         holder.bind(incomeRow)
+    }
+
+    fun addData(rows: MutableList<IncomeRow>) {
+        incomesList.clear()
+        incomesList.addAll(rows)
+        notifyDataSetChanged()
     }
 
     inner class IncomeViewHolder(view: View) : IncomeCustomViewHolder(view) {

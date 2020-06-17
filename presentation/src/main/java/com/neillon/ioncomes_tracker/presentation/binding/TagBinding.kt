@@ -1,4 +1,4 @@
-package com.neillon.incomes_tracker.dashboard.binding
+package com.neillon.ioncomes_tracker.presentation.binding
 
 data class TagBinding(
     var id: Long,

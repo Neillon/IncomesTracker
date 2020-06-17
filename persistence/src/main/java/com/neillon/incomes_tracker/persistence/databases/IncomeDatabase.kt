@@ -27,16 +27,16 @@ abstract class IncomeDatabase : RoomDatabase() {
     abstract fun tagDao(): TagDao
 
     companion object {
-        private lateinit var instance: IncomeDatabase
+        private var instance: IncomeDatabase? = null
 
         fun getInstance(context: Context): IncomeDatabase {
-            if (instance != null)
-                return instance
-
-            instance = Room
-                .databaseBuilder(context, IncomeDatabase::class.java, "incomes.db")
-                .build()
-
+            if (instance == null) {
+                instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    IncomeDatabase::class.java,
+                    "incomes.db"
+                ).build()
+            }
             return instance as IncomeDatabase
         }
 

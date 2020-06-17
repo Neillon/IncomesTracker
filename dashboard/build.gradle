@@ -38,6 +38,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":app")
     implementation project(":domain")
+    implementation project(":presentation")
 
     // Swipe refresh layout
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout_version"

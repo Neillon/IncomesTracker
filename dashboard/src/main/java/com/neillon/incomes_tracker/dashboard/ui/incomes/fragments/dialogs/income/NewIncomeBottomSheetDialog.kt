@@ -14,6 +14,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.neillon.incomes_tracker.dashboard.R
 import com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.tag.NewTagDialog
 import com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.addMoneyWatcher
+import com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.asBigDecimal
 import com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.createNewChipForTag
 import com.neillon.incomes_tracker.domain.Income
 import com.neillon.incomes_tracker.domain.Tag
@@ -70,6 +71,8 @@ class NewIncomeBottomSheetDialog : BottomSheetDialogFragment() {
 
         mButtonSaveIncome.setOnClickListener {
             dismiss()
+            _income.description = mEditTextIncomeDescription.text.toString()
+            _income.value = mEditTextIncomeValue.text.asBigDecimal().toDouble()
             onSave(_income)
         }
 
@@ -82,10 +85,9 @@ class NewIncomeBottomSheetDialog : BottomSheetDialogFragment() {
                 .onSave { dialog, tag ->
                     if (!_income.tags.map { it.description }.contains(tag.description)) {
                         _income.tags.add(tag)
+                        addNewTagChip(it, tag)
+                        dialog.dismiss()
                     }
-
-                    addNewTagChip(it, tag)
-                    dialog.dismiss()
                 }
                 .openDialog()
         }

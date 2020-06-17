@@ -1,22 +1,28 @@
 package com.neillon.incomes_tracker.dashboard.ui.incomes.activities
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.neillon.incomes_tracker.dashboard.R
 import com.neillon.incomes_tracker.dashboard.adapters.IncomeAdapter
-import com.neillon.incomes_tracker.dashboard.adapters.types.IncomeRow
+import com.neillon.ioncomes_tracker.presentation.types.IncomeRow
 import com.neillon.incomes_tracker.dashboard.databinding.ActivityDashboardBinding
+import com.neillon.incomes_tracker.dashboard.ui.extensions.hideBalance
+import com.neillon.incomes_tracker.dashboard.ui.extensions.showBalance
 import com.neillon.incomes_tracker.dashboard.ui.incomes.fragments.dialogs.income.NewIncomeBottomSheetDialog
+import com.neillon.ioncomes_tracker.presentation.viewmodels.IncomeViewModel
 import kotlinx.android.synthetic.main.activity_dashboard.*
+import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
+    private val incomeViewModel: IncomeViewModel by viewModel { parametersOf(this) }
     private var changeBalance = true
-    private lateinit var incomesList: ArrayList<IncomeRow>
+    private val adapter = IncomeAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +30,7 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initializeViews()
+        observeViewModel()
     }
 
     private fun initializeViews() {
@@ -32,9 +39,22 @@ class DashboardActivity : AppCompatActivity() {
         mFabNewIncome.setOnClickListener(::openNewIncomeDialog)
     }
 
+    private fun observeViewModel() {
+        incomeViewModel.listAll()
+
+        incomeViewModel.balance.observe(this, Observer { mTextViewBalance.text = it })
+
+        incomeViewModel.loadingBalance.observe(this, Observer {
+            if (it) mTextViewBalanceLabel.text = getString(R.string.dashboard_balance_label_loading)
+            else mTextViewBalanceLabel.text = getString(R.string.dashboard_balance_label)
+        })
+
+        incomeViewModel.incomesList.observe(this, Observer { adapter.addData(it) })
+    }
+
     private fun openNewIncomeDialog(view: View) {
         NewIncomeBottomSheetDialog.open(supportFragmentManager) {
-            Log.d("DashboardActivity", "Income $it")
+            incomeViewModel.saveIncome(it, this@DashboardActivity)
         }
     }
 
@@ -43,15 +63,13 @@ class DashboardActivity : AppCompatActivity() {
             binding.mTextViewBalance.hideBalance()
             binding.mImageButtonShowBalance.setImageResource(R.drawable.ic_baseline_visibility_off)
         } else {
-            binding.mTextViewBalance.showBalance(value = "$ 25,480.90")
+            binding.mTextViewBalance.showBalance(incomeViewModel.balance.value as String)
             binding.mImageButtonShowBalance.setImageResource(R.drawable.ic_baseline_remove_red_eye)
         }
         changeBalance = !changeBalance
     }
 
     private fun initializeRecyclerViewIncomes() {
-        incomesList = transformData(generateData())
-        val adapter = IncomeAdapter(incomesList)
         mRecyclerIncomes.layoutManager = LinearLayoutManager(this@DashboardActivity)
         mRecyclerIncomes.adapter = adapter
     }

@@ -3,6 +3,7 @@ package com.neillon.incomes_tracker
 import com.google.android.play.core.splitcompat.SplitCompatApplication
 import com.neillon.incomes_tracker.persistence.di.PersistenceModule.persistenceModule
 import com.neillon.incomes_tracker.usecase.di.UseCaseModule.useCaseModule
+import com.neillon.ioncomes_tracker.presentation.di.PresentationModule.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
@@ -19,7 +20,8 @@ class HomeApplication : SplitCompatApplication() {
             androidContext(this@HomeApplication)
             modules(
                 persistenceModule,
-                useCaseModule
+                useCaseModule,
+                presentationModule
             )
         }
     }

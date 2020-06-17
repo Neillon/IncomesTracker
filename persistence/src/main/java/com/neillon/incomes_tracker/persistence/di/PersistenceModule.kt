@@ -11,16 +11,16 @@ import org.koin.dsl.module
 object PersistenceModule {
 
     val persistenceModule = module {
+
         single {
-            IncomeDatabase.getInstance(context = get())
+            IncomeRepository(
+                database = IncomeDatabase.getInstance(context = get()),
+                dispatcher = Dispatchers.IO
+            ) as IIncomeRepository
         }
 
         single {
-            IncomeRepository(database = get(), dispatcher = Dispatchers.IO) as IIncomeRepository
-        }
-
-        single {
-            TagRepository(database = get()) as ITagRepository
+            TagRepository(database = IncomeDatabase.getInstance(context = get())) as ITagRepository
         }
     }
 

@@ -3,6 +3,7 @@
     <string name="new_income_description">New Income</string>
     <string name="dashboard_welcome_message">Welcome back,</string>
     <string name="dashboard_balance_label">Your Balance</string>
+    <string name="dashboard_balance_label_loading">Your Balance is loading</string>
 
     <string name="income_value_question">How much did you spend?</string>
     <string name="save">Save</string>
