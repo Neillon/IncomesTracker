@@ -10,7 +10,6 @@ import com.neillon.incomes_tracker.domain.Tag
 class NewTagDialog(context: Context) : Dialog(context) {
 
     private val tag: Tag = Tag(
-        id = 0L,
         description = "",
         incomeId = 0L
     )

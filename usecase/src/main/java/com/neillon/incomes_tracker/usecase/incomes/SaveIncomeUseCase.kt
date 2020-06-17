@@ -23,7 +23,11 @@ class SaveIncomeUseCase(
             val savedIncome = incomeRepository.insert(income)
 
             if (params.income.tags.isNotEmpty()) {
-                savedIncome.id?.let { id -> params.income.tags.map { it.incomeId = id } }
+                savedIncome.id?.let { id ->
+                    params.income.tags.map {
+                        it.incomeId = id
+                    }
+                }
                 val savedTags = tagRepository.insert(params.income.tags)
                 savedIncome.tags = savedTags.toMutableList()
             }

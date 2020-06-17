@@ -77,9 +77,7 @@ class NewIncomeBottomSheetDialog : BottomSheetDialogFragment() {
         }
 
         mChipNewTag.setOnClickListener {
-            NewTagDialog(
-                it.context
-            )
+            NewTagDialog(it.context)
                 .newInstance()
                 .onCancel(::onCancelNewTag)
                 .onSave { dialog, tag ->

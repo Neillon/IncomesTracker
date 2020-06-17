@@ -6,7 +6,6 @@ import com.neillon.incomes_tracker.domain.Income
 import com.neillon.incomes_tracker.usecase.incomes.ListAllIncomesUseCase
 import com.neillon.incomes_tracker.usecase.incomes.SaveIncomeUseCase
 import com.neillon.ioncomes_tracker.presentation.asLiveData
-import com.neillon.ioncomes_tracker.presentation.binding.IncomeBinding
 import com.neillon.ioncomes_tracker.presentation.extensions.toBind
 import com.neillon.ioncomes_tracker.presentation.types.IncomeRow
 import com.neillon.ioncomes_tracker.presentation.types.IncomeRowType
@@ -14,6 +13,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
 import java.text.NumberFormat
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class IncomeViewModel : ViewModel() {
@@ -63,28 +63,28 @@ class IncomeViewModel : ViewModel() {
 
     private fun transformData(incomes: MutableList<Income>): MutableList<IncomeRow> {
         val result = mutableListOf<IncomeRow>()
-        return incomes
-            .groupBy { item -> item.date }
-            .map { group ->
+        val dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+        val groups = incomes.groupBy { item -> item.date }
+        for (group in groups) {
+            result.add(
+                IncomeRow(
+                    type = IncomeRowType.GROUP,
+                    groupHeader = group.key.format(dateFormatter),
+                    item = null
+                )
+            )
+            group.value.forEach {
                 result.add(
                     IncomeRow(
-                        type = IncomeRowType.GROUP,
-                        groupHeader = group.key.toString(),
-                        item = null
+                        type = IncomeRowType.ITEM,
+                        groupHeader = null,
+                        item = it.toBind()
                     )
                 )
-                group.value.forEach {
-                    result.add(
-                        IncomeRow(
-                            type = IncomeRowType.ITEM,
-                            groupHeader = null,
-                            item = it.toBind()
-                        )
-                    )
-                }
-                return result
             }
-            .toMutableList()
+        }
+
+        return result
     }
 
     companion object {
